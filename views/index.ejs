@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckWeather</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <% if (data === '') { %>
+    <div class="container mt-5 col-lg-6">
+      <p class="display-4 text-center"><span style="color: #fff;">CheckWeather</span>🌤!</a></p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Search weather of your location</h5>
+          <form action="/" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="location" placeholder="Location">
+              <p class="display-5 mt-3 text-muted">Default location is Purnia, In</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Go</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } else if (data === '0') { %>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">Oops! Lost in space🚀, try locations from Earth🌏 !</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/" class="btn btn-primary mt-5 mx-auto">New location</a>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="container mt-5">
+      <p class="display-4 text-center"><span style="color: #fff;">CheckWeather!</span></a></p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Weather in <%= data.name %>, <%= data.sys.country %></h5>
+          <p class="text-muted">Lat: <%= data.coord.lat %>, Lon: <%= data.coord.lon %></p>
+          <img class="float-right" src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png" alt="icon">
+          <p class="display-1"><%= data.main.temp%><sup>o</sup>C</p>
+          <span class="text-muted">Feels like <%= data.main.feels_like %><sup>o</sup>C</span>
+          <h5 class="text-capitalize font-weight-bold"><%= data.weather[0].description %></h5>
+          <div class="overflow-x">
+            <span class="pr-5 inf"><i class="fas fa-wind"></i> Wind <%= data.wind.speed %> m/sec</span>
+            <span class="pr-5 inf"><i class="fas fa-paper-plane"></i> Pressure <%= data.main.pressure %> mb</span>
+            <span class="pr-5 inf"><i class="fas fa-tint"></i> Humidity <%= data.main.humidity %>%</span>
+            <span class="pr-5 inf"><i class="fas fa-eye"></i> Visibility <%= data.visibility/1000 %> km</span>
+            <span class="pr-5 inf"><i class="fas fa-cloud"></i> Cloudiness <%= data.clouds.all %>%</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/" class="btn btn-primary mt-5 mx-auto">New location</a>
+      </div>
+    </div>
+    <% } %>
+    <script src="https://kit.fontawesome.com/ad862d8e11.js" crossorigin="anonymous"></script>
+  </body>
+
+</html>
