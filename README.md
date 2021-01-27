@@ -1,4 +1,4 @@
 # WeatherApp
 A small weather app in Nodejs, Expressjs, OpenweathermapAPI and the EJS view engine
 
-![Screenshot](Screenshot.png)
+![Screenshot](public/Screenshot.png)
